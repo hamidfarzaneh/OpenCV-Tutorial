@@ -1,69 +1,123 @@
 ---
-layout: post
-title: OpenCV Tutorial Part 1
-categories: [general]
-tags: [tutorial , part1 , python , opencv]
-fullview: true
-comments: true
+layout: default
 ---
-### Abstract
-In this part , we are going to talk about how to read an image from a file, options for reading the image 
-in case of its type , and the ways of how can we show it on the screen.
 
-### Including the necessary dependencies
-First of all ,we have to include the packages needed to get the opencv good to go. 
-The first one is actually the `opencv` itself which is the `cv2` demonstrated in the code, then the `numpy` that is used to handle numpy array (we will discuss about it later).
-{% highlight python %}
-import cv2
-import numpy
-{% endhighlight %}
+Text can be **bold**, _italic_, or ~~strikethrough~~.
 
-### Load our image
-Now we have to open our desired image, we use the following image.
-<figure>
-  <img src="/assets/images/picture.png" alt="OpenCV" class="center">
-</figure>
+[Link to another page](./another-page.html).
 
-{% highlight python %}
-img = cv2.imread('picture.png' , cv2.IMREAD_GRAYSCALE)
-{% endhighlight %}
+There should be whitespace between paragraphs.
 
-we can load our image using `imread` function. it loads the image specified by the first argument ( in our case , `picture.png`). The second argument specifies the format in what we want the image. This may be :
-* IMREAD_UNCHANGED : loads the image as is (including the alpha channel if present) , this is a integer value which is -1 in python and a negative number in C++
+There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
 
-* IMREAD_GRAYSCALE : loads the image as an intensity one. this is like converting the image to a gray version of it. integer value of this argument is 0
+# Header 1
 
-* IMREAD_COLOR : loads the image in the BGR format (blue , green , red). Integer value of this argument is 1 in python, and a positive number in C++.
+This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
 
-For testing purposes , we create three images in all of the discussed formats and try to show all of them in seperated windows.
+## Header 2
 
-{% highlight python %}
-unchanged_image = cv2.imread('picture.png' , -1)    # it's like using cv2.IMREAD_UNCHANGED
-gray_image =      cv2.imread('picture.png' , 0 )    # it's like using cv2.IMREAD_GRAYSCALE
-bgr_image =       cv2.imread('picture.png' , 1 )    # it's like using cv2.IMREAD_COLOR
-{% endhighlight %}
+> This is a blockquote following a header.
+>
+> When something is important enough, you do it even if the odds are not in your favor.
 
-### Show The Images
+### Header 3
 
-Now that we have stored the images, we try to show them on the screen. We can either use the `cv2` library itself or `matplotlib`.
-{%highlight python %}
-cv2.imshow('unchanged' , unchanged_image)
-cv2.imshow('gray' , gray_image)
-cv2.imshow('bgr' , bgr_image)
-{% endhighlight %}
+```js
+// Javascript code with syntax highlighting.
+var fun = function lang(l) {
+  dateformat.i18n = require('./lang/' + l)
+  return true;
+}
+```
 
-But if you run this code, you see that nothing appears on the screen, actually the window will open and then closes before you see it. we should make it to wait until a specific action (in our case , pressing a button) happens.
+```ruby
+# Ruby code with syntax highlighting
+GitHubPages::Dependencies.gems.each do |gem, version|
+  s.add_dependency(gem, "= #{version}")
+end
+```
 
-{%highlight python %}
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-{% endhighlight %}
+#### Header 4
 
-the `waitKey` function will wait until a key is pressed and the `destoryAllWindows` function will closes all windows that are opened by cv2.
+*   This is an unordered list following a header.
+*   This is an unordered list following a header.
+*   This is an unordered list following a header.
 
-<figure>
-  <img src="/assets/images/output1.png" alt="OpenCV" class="center">
-</figure>
+##### Header 5
+
+1.  This is an ordered list following a header.
+2.  This is an ordered list following a header.
+3.  This is an ordered list following a header.
+
+###### Header 6
+
+| head1        | head two          | three |
+|:-------------|:------------------|:------|
+| ok           | good swedish fish | nice  |
+| out of stock | good and plenty   | nice  |
+| ok           | good `oreos`      | hmm   |
+| ok           | good `zoute` drop | yumm  |
+
+### There's a horizontal rule below this.
+
+* * *
+
+### Here is an unordered list:
+
+*   Item foo
+*   Item bar
+*   Item baz
+*   Item zip
+
+### And an ordered list:
+
+1.  Item one
+1.  Item two
+1.  Item three
+1.  Item four
+
+### And a nested list:
+
+- level 1 item
+  - level 2 item
+  - level 2 item
+    - level 3 item
+    - level 3 item
+- level 1 item
+  - level 2 item
+  - level 2 item
+  - level 2 item
+- level 1 item
+  - level 2 item
+  - level 2 item
+- level 1 item
+
+### Small image
+
+![Octocat](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
+
+### Large image
+
+![Branching](https://guides.github.com/activities/hello-world/branching.png)
 
 
+### Definition lists can be used with HTML syntax.
 
+<dl>
+<dt>Name</dt>
+<dd>Godzilla</dd>
+<dt>Born</dt>
+<dd>1952</dd>
+<dt>Birthplace</dt>
+<dd>Japan</dd>
+<dt>Color</dt>
+<dd>Green</dd>
+</dl>
+
+```
+Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+```
+
+```
+The final element.
+```
