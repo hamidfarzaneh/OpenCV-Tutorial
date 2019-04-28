@@ -1,84 +1,21 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>OpenCV Tutorial</title>
-		<description>OpenCV Tutorial</description>
-		<link>/</link>
-		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-		
+		<title>{{ site.title }}</title>
+		<description>{{ site.description }}</description>
+		<link>{{ site.BASE_PATH }}/</link>
+		<atom:link href="{{ site.BASE_PATH }}/{{ site.rss_path }}" rel="self" type="application/rss+xml" />
+		{% for post in site.posts limit:10 %}
 			<item>
-				<title>OpenCV Tutorial Part 1</title>
-				<description>&lt;h3 id=&quot;abstract&quot;&gt;Abstract&lt;/h3&gt;
-&lt;p&gt;In this part , we are going to talk about how to read an image from a file, options for reading the image 
-in case of its type , and the ways of how can we show it on the screen.&lt;/p&gt;
-
-&lt;h3 id=&quot;including-the-necessary-dependencies&quot;&gt;Including the necessary dependencies&lt;/h3&gt;
-&lt;p&gt;First of all ,we have to include the packages needed to get the opencv good to go. 
-The first one is actually the &lt;code class=&quot;highlighter-rouge&quot;&gt;opencv&lt;/code&gt; itself which is the &lt;code class=&quot;highlighter-rouge&quot;&gt;cv2&lt;/code&gt; demonstrated in the code, then the &lt;code class=&quot;highlighter-rouge&quot;&gt;numpy&lt;/code&gt; that is used to handle numpy array (we will discuss about it later).&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;cv2&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;load-our-image&quot;&gt;Load our image&lt;/h3&gt;
-&lt;p&gt;Now we have to open our desired image, we use the following image.&lt;/p&gt;
-&lt;figure&gt;
-  &lt;img src=&quot;/assets/images/picture.png&quot; alt=&quot;OpenCV&quot; class=&quot;center&quot; /&gt;
-&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'picture.png'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IMREAD_GRAYSCALE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;we can load our image using &lt;code class=&quot;highlighter-rouge&quot;&gt;imread&lt;/code&gt; function. it loads the image specified by the first argument ( in our case , &lt;code class=&quot;highlighter-rouge&quot;&gt;picture.png&lt;/code&gt;). The second argument specifies the format in what we want the image. This may be :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;IMREAD_UNCHANGED : loads the image as is (including the alpha channel if present) , this is a integer value which is -1 in python and a negative number in C++&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;IMREAD_GRAYSCALE : loads the image as an intensity one. this is like converting the image to a gray version of it. integer value of this argument is 0&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;IMREAD_COLOR : loads the image in the BGR format (blue , green , red). Integer value of this argument is 1 in python, and a positive number in C++.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For testing purposes , we create three images in all of the discussed formats and try to show all of them in seperated windows.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;unchanged_image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'picture.png'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# it's like using cv2.IMREAD_UNCHANGED&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;gray_image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;      &lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'picture.png'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# it's like using cv2.IMREAD_GRAYSCALE&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;bgr_image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'picture.png'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# it's like using cv2.IMREAD_COLOR&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;show-the-images&quot;&gt;Show The Images&lt;/h3&gt;
-
-&lt;p&gt;Now that we have stored the images, we try to show them on the screen. We can either use the &lt;code class=&quot;highlighter-rouge&quot;&gt;cv2&lt;/code&gt; library itself or &lt;code class=&quot;highlighter-rouge&quot;&gt;matplotlib&lt;/code&gt;.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'unchanged'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unchanged_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'gray'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gray_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'bgr'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bgr_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;But if you run this code, you see that nothing appears on the screen, actually the window will open and then closes before you see it. we should make it to wait until a specific action (in our case , pressing a button) happens.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;waitKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;destroyAllWindows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;waitKey&lt;/code&gt; function will wait until a key is pressed and the &lt;code class=&quot;highlighter-rouge&quot;&gt;destoryAllWindows&lt;/code&gt; function will closes all windows that are opened by cv2.&lt;/p&gt;
-
-&lt;figure&gt;
-  &lt;img src=&quot;/assets/images/output1.png&quot; alt=&quot;OpenCV&quot; class=&quot;center&quot; /&gt;
-&lt;/figure&gt;
-
-</description>
-				<pubDate>Sat, 27 Apr 2019 00:00:00 +0430</pubDate>
-				<link>/general/2019/04/27/tutorial-1.html</link>
-				<guid isPermaLink="true">/general/2019/04/27/tutorial-1.html</guid>
+				<title>{{ post.title }}</title>
+				<description>{{ post.content | xml_escape }}</description>
+				<pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+				<link>{{ site.BASE_PATH }}{{ post.url }}</link>
+				<guid isPermaLink="true">{{ site.BASE_PATH }}{{ post.url }}</guid>
 			</item>
-		
-			<item>
-				<title>OpenCV Tutorial Part 2</title>
-				<description>&lt;p&gt;Under Production&lt;/p&gt;
-</description>
-				<pubDate>Sat, 28 Apr 2018 00:00:00 +0430</pubDate>
-				<link>/general/2018/04/28/tutorial-2.html</link>
-				<guid isPermaLink="true">/general/2018/04/28/tutorial-2.html</guid>
-			</item>
-		
+		{% endfor %}
 	</channel>
 </rss>
