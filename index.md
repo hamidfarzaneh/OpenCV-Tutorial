@@ -1,5 +1,6 @@
 ---
 layout: default
+title: OpenCV Tutorial
 ---
 ## Abstract 
 In this series, we are going to talk about `OpenCV` using python. In near future we may create another 
