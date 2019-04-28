@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.6.0 -->
+<title>Another page | Opencv Tutorial</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Another page" />
+<meta name="author" content="Hamid Farzaneh" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is just another page" />
+<meta property="og:description" content="This is just another page" />
+<link rel="canonical" href="http://localhost:4000/posts/part1.html" />
+<meta property="og:url" content="http://localhost:4000/posts/part1.html" />
+<meta property="og:site_name" content="Opencv Tutorial" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/posts/part1.html","author":{"@type":"Person","name":"Hamid Farzaneh"},"headline":"Another page","description":"This is just another page","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Another page</h1>
+      <h2 class="project-tagline">This is just another page</h2>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h3 id="abstract">Abstract</h3>
+<p>In this part , we are going to talk about how to read an image from a file, options for reading the image 
+in case of its type , and the ways of how can we show it on the screen.</p>
+
+<h3 id="including-the-necessary-dependencies">Including the necessary dependencies</h3>
+<p>First of all ,we have to include the packages needed to get the opencv good to go. 
+The first one is actually the <code class="highlighter-rouge">opencv</code> itself which is the <code class="highlighter-rouge">cv2</code> demonstrated in the code, then the <code class="highlighter-rouge">numpy</code> that is used to handle numpy array (we will discuss about it later).</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span></code></pre></figure>
+
+<h3 id="load-our-image">Load our image</h3>
+<p>Now we have to open our desired image, we use the following image.</p>
+<figure>
+  <img src="/assets/images/picture.png" alt="OpenCV" class="center" />
+</figure>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'picture.png'</span> <span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span></code></pre></figure>
+
+<p>we can load our image using <code class="highlighter-rouge">imread</code> function. it loads the image specified by the first argument ( in our case , <code class="highlighter-rouge">picture.png</code>). The second argument specifies the format in what we want the image. This may be :</p>
+<ul>
+  <li>
+    <p>IMREAD_UNCHANGED : loads the image as is (including the alpha channel if present) , this is a integer value which is -1 in python and a negative number in C++</p>
+  </li>
+  <li>
+    <p>IMREAD_GRAYSCALE : loads the image as an intensity one. this is like converting the image to a gray version of it. integer value of this argument is 0</p>
+  </li>
+  <li>
+    <p>IMREAD_COLOR : loads the image in the BGR format (blue , green , red). Integer value of this argument is 1 in python, and a positive number in C++.</p>
+  </li>
+</ul>
+
+<p>For testing purposes , we create three images in all of the discussed formats and try to show all of them in seperated windows.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">unchanged_image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'picture.png'</span> <span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>    <span class="c1"># it's like using cv2.IMREAD_UNCHANGED
+</span><span class="n">gray_image</span> <span class="o">=</span>      <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'picture.png'</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">)</span>    <span class="c1"># it's like using cv2.IMREAD_GRAYSCALE
+</span><span class="n">bgr_image</span> <span class="o">=</span>       <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s">'picture.png'</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">)</span>    <span class="c1"># it's like using cv2.IMREAD_COLOR</span></code></pre></figure>
+
+<h3 id="show-the-images">Show The Images</h3>
+
+<p>Now that we have stored the images, we try to show them on the screen. We can either use the <code class="highlighter-rouge">cv2</code> library itself or <code class="highlighter-rouge">matplotlib</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s">'unchanged'</span> <span class="p">,</span> <span class="n">unchanged_image</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s">'gray'</span> <span class="p">,</span> <span class="n">gray_image</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s">'bgr'</span> <span class="p">,</span> <span class="n">bgr_image</span><span class="p">)</span></code></pre></figure>
+
+<p>But if you run this code, you see that nothing appears on the screen, actually the window will open and then closes before you see it. we should make it to wait until a specific action (in our case , pressing a button) happens.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span></code></pre></figure>
+
+<p>the <code class="highlighter-rouge">waitKey</code> function will wait until a key is pressed and the <code class="highlighter-rouge">destoryAllWindows</code> function will closes all windows that are opened by cv2.</p>
+
+<figure>
+  <img src="/assets/images/output1.png" alt="OpenCV" class="center" />
+</figure>
+
+<p><a href="./">back</a></p>
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  </body>
+</html>
