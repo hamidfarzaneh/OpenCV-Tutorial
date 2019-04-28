@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Another page
-description: This is just another page
+title: OpenCV Tutorial - Part 1
 ---
 
 ### Abstract
