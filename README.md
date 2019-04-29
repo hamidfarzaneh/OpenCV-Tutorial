@@ -1,4 +1,10 @@
-# The Cayman theme
+# OpenCV Tutorial Using Python
+* author : Hamid Farzaneh
+![Logo](assets/images/picture.png)
+## Outlines
+1. Part 1 : We talk about loading the image file, formats of loaded file and how to display the output file.
+2. Part 2 : Under production
+<!-- # The Cayman theme
 
 [![Build Status](https://travis-ci.org/pages-themes/cayman.svg?branch=master)](https://travis-ci.org/pages-themes/cayman) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.io/rb/jekyll-theme-cayman)
 
@@ -106,4 +112,4 @@ If you'd like to preview the theme locally (for example, in the process of propo
 
 ### Running tests
 
-The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` once before the test script will work.
+The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` once before the test script will work. -->
