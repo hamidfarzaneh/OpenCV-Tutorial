@@ -3,6 +3,9 @@
 ## Outlines
 1. Part 1 : We talk about loading the image file, formats of loaded file and how to display the output file.
 2. Part 2 : Under production
+
+## Link 
+[Link to the tutorial] (https://hamidfarzaneh.github.io/OpenCV-Tutorial)
 <!-- # The Cayman theme
 
 [![Build Status](https://travis-ci.org/pages-themes/cayman.svg?branch=master)](https://travis-ci.org/pages-themes/cayman) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.io/rb/jekyll-theme-cayman)
