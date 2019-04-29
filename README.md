@@ -1,5 +1,4 @@
 # OpenCV Tutorial Using Python
-* author : Hamid Farzaneh
 ![Logo](assets/images/picture.png)
 ## Outlines
 1. Part 1 : We talk about loading the image file, formats of loaded file and how to display the output file.
